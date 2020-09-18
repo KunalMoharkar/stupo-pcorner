@@ -1,0 +1,3 @@
+PROFESSOR_ID = 4
+STATUS_ALL = "all"
+STATUS_SELECTED = "selected"
