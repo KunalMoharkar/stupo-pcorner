@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Application,Project,Professor,Student,Projectstatus,Applicationstatus
+from .models import Application,Project,Professor,Student,Projectstatus,Applicationstatus,Tech
 from portal.serializers import UserSerializer,RoleSerializer
 
 
@@ -30,10 +30,17 @@ class ApplicationstatusSerializer(serializers.ModelSerializer):
         model = Applicationstatus
         fields = '__all__'
 
+class TechSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tech
+        fields = '__all__'
+
 class ProjectSerializer(serializers.ModelSerializer):
 
     professor = ProfessorSerializer(read_only=True)
     project_status = ProjectstatusSerializer(read_only=True)
+    tech_used = TechSerializer(read_only=True, many=True)
+    tech_used_id = serializers.PrimaryKeyRelatedField(queryset = Tech.objects.all(), source='tech_used', write_only=True, many=True)
     professor_id = serializers.PrimaryKeyRelatedField(queryset = Professor.objects.all(), source='professor', write_only=True)
     project_status_id =  serializers.PrimaryKeyRelatedField(queryset = Projectstatus.objects.all(), source='project_status', write_only=True)
 

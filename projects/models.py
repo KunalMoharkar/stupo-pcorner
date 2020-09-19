@@ -26,11 +26,14 @@ class Projectstatus(models.Model):
     def __str__(self):
         return self.name
 
+class Tech(models.Model):
+    name=models.CharField(max_length=1000)
+
 class Project(models.Model):
 
     title=models.CharField(max_length=200)
     description=models.CharField(max_length=1000)
-    tech_used= models.CharField(max_length=1000)
+    tech_used=models.ManyToManyField(Tech)
     criterion=models.CharField(max_length=200, default="None")
     project_status = models.ForeignKey(Projectstatus, on_delete=models.PROTECT, null=True)
     professor=models.ForeignKey(Professor, on_delete=models.CASCADE)
