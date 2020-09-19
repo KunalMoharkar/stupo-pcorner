@@ -8,11 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 import jwt
-from rest_framework.permissions import BasePermission
 from .constants import *
-
-
-
 
 
 class ApplicationViewSet(viewsets.ModelViewSet):
@@ -35,7 +31,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
     def isProfessor(self,request):
         try:
-            id =  request.POST.get('student_id')
+            id =  request.data.get('student_id')
             user = PortalappPersoninformation.objects.get(pk=id)
 
             if user.roleid.role_id==PROFESSOR_ID:
@@ -51,7 +47,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
         if self.auth(request)==True:
             if self.isProfessor(request)==True:
                 application = Application.objects.get(pk=pk)
-                data = {'application_status_id':request.POST.get('application_status_id')}
+                data = {'application_status_id':request.data.get('application_status_id')}
                 serializer = ApplicationSerializer(application, data, partial=True)
                 if serializer.is_valid():
                     serializer.save()
@@ -119,22 +115,21 @@ class ProjectViewSet(viewsets.ModelViewSet):
     
     def isProfessor(self,request):
         try:
-            id =  request.POST.get('professor_id')
+            id = request.data.get('professor_id')
             user = PortalappPersoninformation.objects.get(pk=id)
-
             if user.roleid.role_id==PROFESSOR_ID:
                 return True
             else:
                 return False 
-        except:
-            Http404
+        except:        
+            raise Http404
 
     def update(self, request, pk):
 
         if self.auth(request)==True:   
             if self.isProfessor(request)==True:
                 project = Project.objects.get(pk=pk)
-                data = {'project_status_id':request.POST.get('project_status_id')}
+                data = {'project_status_id':request.data.get('project_status_id')}
                 serializer = ProjectSerializer(project, data, partial=True)
                 if serializer.is_valid():
                     serializer.save()
@@ -144,7 +139,6 @@ class ProjectViewSet(viewsets.ModelViewSet):
         raise Http404
 
     def create(self, request):
-
         if self.auth(request)==True:
             if self.isProfessor(request)==True:
                 serializer = ProjectSerializer(data=request.data)
