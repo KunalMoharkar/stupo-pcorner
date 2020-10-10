@@ -53,7 +53,7 @@ class Navlinks extends React.Component{
       }
       else
       {
-        if(localStorage.getItem('role') === "student")
+        if(localStorage.getItem('role_id') === "3")
         {
           return(
               <li class="nav-item"><Link to={"/DashboardStudent/"} class="nav-link">Dashboard</Link></li>

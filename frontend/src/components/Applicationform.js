@@ -44,15 +44,14 @@ class Applicationform extends React.Component {
           let form_data = new FormData();
           form_data.append('project_id' , this.props.match.params.project_id)
           form_data.append("student_id" , localStorage.getItem('user_id'))
-          form_data.append("application_status_id" , "2")
+          form_data.append("application_status_id" , "4")
           form_data.append('statement_of_purpose' , this.state.statement_of_purpose)
-          form_data.append('is_selected' , false)
           form_data.append('resume' , this.state.resume , this.state.resume.name)
 
           fetch(`${APPLICATION_ROUTE}`, {
             method: 'POST',
             headers: {
-              Authorization: `JWT ${localStorage.getItem('token')}`,
+              Authorization: `${localStorage.getItem('token')}`,
             },
             body:form_data
           })

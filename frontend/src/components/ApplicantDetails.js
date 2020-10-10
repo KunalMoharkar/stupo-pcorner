@@ -38,23 +38,23 @@ class ApplicantDetails extends React.Component {
     this.setState({application_id :this.props.match.params.application_id })
     let url2 = `${APPLICATION_ROUTE}${this.props.match.params.application_id}/`
     fetch(url2, {headers: {
-           Authorization: `JWT ${localStorage.getItem('token')}`
+           Authorization: `${localStorage.getItem('token')}`
        }})
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            name:result.student.user.username,
-            enrollment_id:result.student.enrollment_id,
+            name:result.student.user.firstname,
+            enrollment_id:result.student.roll_no,
             email:result.student.user.email,
-            department:result.student.department,
+            department:result.student.user.deptid,
             cgpa:result.student.cgpa,
             statment_of_purpose:result.statement_of_purpose,
             project_title:result.project.title,
-            phone:result.student.phone_number,
+            phone:result.student.user.telephone1,
             project_id : result.project.id,
-            student_id: result.student.user.id,
+            //student_id: result.student.user.id,
             status: result.application_status.id,
             resume: result.resume,
           })
@@ -138,6 +138,8 @@ class ApplicantDetails extends React.Component {
             </div>
          </div>
 
+        {localStorage.getItem('role_id')===4? 
+        <div>       
          <div class="container my-2">
            {this.state.status === APPLICATION_SELECTED
             ? <div class="alert alert-success">You have selected this student !</div>
@@ -161,9 +163,13 @@ class ApplicantDetails extends React.Component {
               </form>
             </div>
             <div></div>
-
           </div>
          </div>
+         </div>
+         : 
+         <div>
+         <a href={this.state.resume} target="blank" class="btn btn-dark">View Resume</a>
+        </div>}
        </div>
       </div>
     )

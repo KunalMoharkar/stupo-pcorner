@@ -29,7 +29,7 @@ class AppliedProjects extends React.Component {
     var that = this
     let url = `${APPLICATION_ROUTE}?student_id=${user_id}`;
     fetch(url ,{headers: {
-      Authorization: `JWT ${localStorage.getItem('token')}`
+      Authorization: `${localStorage.getItem('token')}`
     }} )
     .then(res => res.json())
     .then(data => {
@@ -115,7 +115,7 @@ class AppliedProjects extends React.Component {
                   {/* Ico nic One home page thumbnail with custom excerpt */}
                   <div className="excerpt-thumb">
                   </div>
-                  <p>Technologies used:{item.project.tech_used}</p>
+                  <p>Technologies used:</p>
                   <p>Criteria:{item.project.criterion}</p>
                 </div>
                 <div>

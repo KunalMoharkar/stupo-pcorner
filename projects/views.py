@@ -48,7 +48,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     def update(self, request, pk):
 
         if self.auth(request)==True:
-            if self.isProfessor(request)==True:
+            if self.isProfessor(request)==False:
                 application = Application.objects.get(pk=pk)
                 data = {'application_status_id':request.data.get('application_status_id')}
                 serializer = ApplicationSerializer(application, data, partial=True)
@@ -62,7 +62,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     def create(self, request):
 
         if self.auth(request)==True:
-            if self.isProfessor(request)==True:
+            if self.isProfessor(request)==False:
                 serializer = ApplicationSerializer(data=request.data)
                 if serializer.is_valid():
                     serializer.save()

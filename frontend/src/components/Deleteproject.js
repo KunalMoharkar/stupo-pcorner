@@ -55,11 +55,6 @@ export default class Deleteproject extends React.Component {
 
         }
 
-
-
-
-
-
         const error_alert =()=>{
 
             if(this.state.is_deleted)

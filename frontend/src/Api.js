@@ -8,3 +8,5 @@ export const PROJECT_OPEN = 1
 export const PROJECT_CLOSED = 2
 export const APPLICATION_SELECTED = 1
 export const APPLICATION_NOT_SELECTED = 2
+export const PROFESSOR = 4
+export const STUDENT = 3
