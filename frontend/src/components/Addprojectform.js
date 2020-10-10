@@ -2,7 +2,7 @@ import React from 'react'
 import '../css/Loginform.css'
 import Navigationbar from './Navigationbar'
 import {Redirect} from 'react-router-dom';
-import {PROJECT_ROUTE,TECHS_ROUTE} from '../Api.js'
+import {PROJECT_ROUTE,TECHS_ROUTE,PROJECT_OPEN} from '../Api.js'
 
 class Addprojectform extends React.Component {
 
@@ -66,7 +66,7 @@ class Addprojectform extends React.Component {
         },
         body:JSON.stringify( {
                 "professor_id": localStorage.getItem('user_id'),
-                "project_status_id" : "1",
+                "project_status_id" : PROJECT_OPEN,
                 "title": this.state.title,
                 "description":this.state.description,
                 "criterion": this.state.criterion,
