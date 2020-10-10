@@ -90,9 +90,9 @@ class ApplicationViewSet(viewsets.ModelViewSet):
                 if status == STATUS_ALL:
                     queryset = queryset.filter(project__pk=project_id).order_by('-pk')
                 elif status == STATUS_SELECTED:
-                    queryset = queryset.filter(application_status__pk=1).filter(project__pk=project_id).order_by('-pk')
+                    queryset = queryset.filter(application_status__pk=3).filter(project__pk=project_id).order_by('-pk')
                 else :
-                    queryset = queryset.filter(application_status__pk=2).filter(project__pk=project_id).order_by('-pk')
+                    queryset = queryset.filter(application_status__pk=4).filter(project__pk=project_id).order_by('-pk')
 
             return queryset
         raise Http404

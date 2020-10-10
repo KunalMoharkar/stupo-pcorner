@@ -38,7 +38,7 @@ class ContentsApplicants extends React.Component {
     var that = this;
     let url2 = `${APPLICATION_ROUTE}?project_id=${this.props.match.params.project_id}&status=${status}`
     fetch(url2, {headers: {
-           Authorization: `JWT ${localStorage.getItem('token')}`
+           Authorization: `${localStorage.getItem('token')}`
        }})
       .then(res => res.json())
       .then(
@@ -46,7 +46,6 @@ class ContentsApplicants extends React.Component {
           setTimeout(function() {
             that.setState({
               isLoaded: true,
-
               items: result,
             })
           },1000);
@@ -88,11 +87,6 @@ class ContentsApplicants extends React.Component {
 
          }
 
-
-
-
-
-
      const isLoaded = this.state.isLoaded
 
     return(
@@ -126,9 +120,9 @@ class ContentsApplicants extends React.Component {
          {this.state.items.map(item =>(
 
         <tr>
-          <td>{item.student.user.username}</td>
-          <td>{item.student.enrollment_id}</td>
-          <td>{item.student.department}</td>
+          <td>{item.student.user.firstname}</td>
+          <td>{item.student.user.roll_no}</td>
+          <td>{item.student.user.deptid}</td>
           <td><Link to={`/ApplicantDetails/${item.id}`} class="btn btn-dark">Details</Link></td>
         </tr>
        ))}
