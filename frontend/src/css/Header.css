@@ -1,0 +1,11 @@
+.cover-image {
+    width: 94%;
+    margin: 25px 3%;
+    border-radius: 4px;
+    padding: 10px 12px;
+    text-align: center;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 26px;
+    background-color: #2a3360;
+}

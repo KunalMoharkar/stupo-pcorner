@@ -1,0 +1,34 @@
+#card{
+  background-color: #e8e8ed;
+  transition-duration:2000ms;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  box-shadow: None;
+}
+
+#card-title{
+
+  color:#0d0552;
+}
+
+#card:hover{
+  transform:scale(1.002);
+  box-shadow:2px 2px 2px 2px #8d8d96;
+}
+
+.spin-container{
+
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+.spinner{
+
+
+  height: 100px;
+  width: 100px;
+
+}

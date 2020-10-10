@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'portal',
     'projects',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'pcorner.urls'
@@ -73,6 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pcorner.wsgi.application'
 
+CORS_ORIGIN_WHITELIST = ('http://localhost:3000',)
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

@@ -1,0 +1,45 @@
+
+.form-container{
+
+
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding: 5px;
+
+
+}
+
+
+input[type="text"],input[type="password"]{
+  display: block;
+  border-style: none;
+  border-bottom: 2px solid grey;
+  width:100%;
+  margin: 5px;
+}
+
+input[type="text"]:focus,input[type="password"]:focus{
+
+  outline: None;
+}
+
+
+.form-header{
+
+  background-color: #0d0552;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom:10px;
+  margin-left:3px;
+  margin-right: 3px;
+  text-align: center;
+  font-size: 20%;
+  color: #dbde21;
+  box-shadow: None;
+  border-radius: 4px
+
+
+}

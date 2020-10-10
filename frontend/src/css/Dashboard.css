@@ -1,0 +1,23 @@
+.fa-dashboard-custom{
+  font-size: 50px;
+  color: white;
+}
+
+.dashboard-button{
+  border-radius: 50%;
+  margin: 2px;
+}
+
+.dashboard-card{
+
+  border-bottom: 3px solid #0d0552;
+  box-shadow: None;
+  transition-duration: 1000ms;
+}
+
+.dashboard-card:hover{
+
+  box-shadow: 2px 2px 2px 2px grey;
+  transform: scale(1.008);
+
+}
