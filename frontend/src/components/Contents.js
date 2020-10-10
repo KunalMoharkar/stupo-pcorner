@@ -39,8 +39,6 @@ class Contents extends React.Component {
         .then(
           
          (result) => {
-          console.log(result)
-          console.log("hi")
            setTimeout(function() {
              that.setState({
                isLoaded: true,
@@ -120,7 +118,17 @@ class Contents extends React.Component {
                   {/* Ico nic One home page thumbnail with custom excerpt */}
                   <div className="excerpt-thumb">
                   </div>
-                  <p>Technologies used:</p>
+                
+                  <div className="techs-container">
+                    <p>
+                      Technologies used:
+                    </p>
+                    {item.tech_used.map((tech)=>{
+                      return(
+                        <p className="tech-holders">{tech.name}</p>
+                      )
+                    })}
+                  </div>
                   <p>Criteria:{item.criterion}</p>
                 </div>
                 <div>

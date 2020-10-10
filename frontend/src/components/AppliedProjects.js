@@ -119,7 +119,7 @@ class AppliedProjects extends React.Component {
                   <p>Criteria:{item.project.criterion}</p>
                 </div>
                 <div>
-                  <Link to={`/ProjectDetails/${item.id}`} class="float-right">
+                  <Link to={`/ProjectDetails/${item.project.id}`} class="float-right">
                   <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">Details</button>
                   </Link>
                   <Link to={`/ApplicantDetails/${item.id}`}>

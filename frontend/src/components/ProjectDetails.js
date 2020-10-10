@@ -30,7 +30,7 @@ class ProjectDetails extends React.Component {
 
     let url2 = `${PROJECT_ROUTE}${this.props.match.params.project_id}/`
     fetch(url2, {headers: {
-           Authorization: `JWT ${localStorage.getItem('token')}`
+           Authorization: `${localStorage.getItem('token')}`
        }})
       .then(res => res.json())
       .then(

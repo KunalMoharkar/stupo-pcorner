@@ -168,7 +168,7 @@ class ApplicantDetails extends React.Component {
          </div>
          : 
          <div>
-         <a href={this.state.resume} target="blank" class="btn btn-dark">View Resume</a>
+         <a href={this.state.resume} target="blank" style={{marginTop: '10px!important'}} className="stupo-btn">View Resume</a>
         </div>}
        </div>
       </div>

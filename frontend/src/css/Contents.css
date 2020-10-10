@@ -32,3 +32,13 @@
   width: 100px;
 
 }
+
+.tech-holders{
+  padding: 5px;
+}
+
+.techs-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
