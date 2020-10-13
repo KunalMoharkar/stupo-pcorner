@@ -1,0 +1,11 @@
+asgiref==3.2.10
+Django==3.1.1
+django-cors-headers==3.5.0
+djangorestframework==3.11.1
+mysql-connector-python==8.0.21
+#mysqlclient @ file:///C:/Users/kumar/Desktop/project/pcorner/mysqlclient-1.4.6-cp37-cp37m-win32.whl
+protobuf==3.13.0
+PyJWT==1.7.1
+pytz==2020.1
+six==1.15.0
+sqlparse==0.3.1
