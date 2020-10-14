@@ -1,13 +1,7 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import '../css/Modal.css';
-import {Link,Redirect} from 'react-router-dom'
-import {PROJECT_OPEN,PROJECT_CLOSED} from '../Api.js'
-
+/*project open/close confirm modal*/
 export const ModalOpenProject=(props)=>{
-
-
-    
-
     return(
         <div className="container">
         <div className="modal fade" id="Mymodal"  role="dialog">
@@ -20,8 +14,9 @@ export const ModalOpenProject=(props)=>{
                      <p>Do you want to Proceed ?</p>
                 </div>
                 <div className="modal-footer">
+                    {/*handler from to  handle conformation*/ }
                     <button type="button" className="btn btn-default" onClick={props.handler} data-dismiss="modal">Yes</button>
-                    <button type="button" style={{'float':'right'}} className="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" className="btn btn-default" data-dismiss="modal">No</button>
                 </div>
             </div> 
             </div>
@@ -30,12 +25,11 @@ export const ModalOpenProject=(props)=>{
     )
 
 }
-
+/*project open/close confirm modal*/
 export const ModalDeleteProject=(props)=>{
     const id = "myModal";
     return(
         <div className="container">
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
         <div className="modal fade" id="myModal" role="dialog">
             <div className="modal-dialog">
             <div className="modal-content">
@@ -46,8 +40,9 @@ export const ModalDeleteProject=(props)=>{
                      <p>Do you want to Proceed ?</p>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal">Yes</button>
-                  <button type="button" className="btn btn-default" data-dismiss="modal">No</button>
+                    {/*handler from to  handle conformation*/ }
+                    <button type="button" className="btn btn-default" onClick={props.handler} data-dismiss="modal">Yes</button>
+                    <button type="button" className="btn btn-default" data-dismiss="modal">No</button>
                 </div>
             </div> 
             </div>

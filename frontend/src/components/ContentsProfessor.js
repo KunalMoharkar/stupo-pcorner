@@ -4,7 +4,8 @@ import Header from './Header'
 import {Link , Redirect} from 'react-router-dom'
 import Navigationbar from './Navigationbar'
 import {PROJECT_ROUTE,PROJECT_OPEN,PROJECT_CLOSED} from '../Api.js'
-import {ModalOpenProject} from './Modal'
+import {ModalOpenProject,ModalDeleteProject} from './Modal'
+
 
 class ContentsProfessor extends React.Component {
   constructor(props) {
@@ -17,22 +18,16 @@ class ContentsProfessor extends React.Component {
 
   }
 
-  handleRedirect=()=>{
-    return (
-      <Redirect
-        to={{
-          pathname : '/ContentsProfessor',
-        }}
-        />
-    )
-  }
-
-  handleModalClick=(project_id,status)=>{
+  /*
+  called on modal click open/close and delete
+  default arg status
+  */  
+  handleModalClick=(project_id,status = PROJECT_OPEN)=>{
     localStorage.setItem('status',status);
     localStorage.setItem('project_id',project_id);
   }
 
-
+  
   ChangeProjectStatus=()=>{
       
       const project_id = localStorage.getItem('project_id');
@@ -50,6 +45,7 @@ class ContentsProfessor extends React.Component {
               }),
       })
         .then(()=>{
+          /*force page reload*/
           window.location.reload(false)
         })
         .catch(()=>{
@@ -69,7 +65,7 @@ class ContentsProfessor extends React.Component {
         },
       })
       .then(()=>{
-    
+        window.location.reload(false)
       })
       .catch(()=>{
           console.log("error")
@@ -104,6 +100,7 @@ class ContentsProfessor extends React.Component {
 
    render(){
 
+     {/*Authorzation checks*/}
      if( localStorage.getItem( 'token') === null){
         return (
           <Redirect
@@ -117,7 +114,7 @@ class ContentsProfessor extends React.Component {
         )
      }
      else{
-
+        {/*Role based Auth*/}
          if(localStorage.getItem('role') === "student")
          {
            return(
@@ -134,60 +131,56 @@ class ContentsProfessor extends React.Component {
 
      }
 
-
-     const isLoaded = this.state.isLoaded
-
+     const isLoaded = this.state.isLoaded;
 
      return(
        <div>
-       <Navigationbar />
-       <ModalOpenProject handler={this.ChangeProjectStatus}/>
-       <Header content="Your Projects" />
-       <div class="container">
-       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Mymodal" id="open">Open Modal</button>
-        {isLoaded?null:<div class="spin-container"><div class="spinner spinner-grow text-success"></div><h4>Loading...</h4></div>}
-       {this.state.items.map(item =>(
-           <table className="table table-hover">
-        <tbody>
-          <tr>
-            <td id="linkdata">
-              <article id className="post-137294 post type-post status-publish format-standard hentry category-interview-experiences tag-amazon">
-                <header className="entry-header">
-                <Link to={`/ProjectDetails/${item.id}`} >
-                  <h2 className="entry-title">
-                    {item.title}
-                    &nbsp;
-                  </h2>
-                  </Link>
-                </header>
-                {/* entry-header */}
-                <div className="entry-summary">
-                  {/* Ico nic One home page thumbnail with custom excerpt */}
-                  <div className="excerpt-thumb">
-                  </div>
-                  <p>Technologies used:</p>
-                  <p>Criteria:{item.criterion}</p>
-                </div>
-                <div>
-                <Link to={`/ContentsApplicants/${item.id}`}>
-                <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">See Applicants</button>
-                </Link>
-                {item.project_status.id===PROJECT_OPEN?
-                <button type="button" data-toggle="modal" data-target="#Mymodal" onClick={()=>{this.handleModalClick(item.id,PROJECT_CLOSED)}} id style={{marginTop: '10px!important'}} className="stupo-btn">Close</button>
-                :
-                <button type="button" data-toggle="modal" data-target="#Mymodal" onClick={()=>{this.handleModalClick(item.id,PROJECT_OPEN)}} id style={{marginTop: '10px!important'}} className="stupo-btn">Open</button>
-                }
-                  <Link to={`/Deleteproject/${item.id}`} class="float-right">
-                  <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">Delete</button>
-                  </Link>
-                </div>
-              </article>{/* #post */}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-       ))}
-     </div>
+        <Navigationbar />
+        <ModalOpenProject handler={this.ChangeProjectStatus}/>
+        <ModalDeleteProject handler={this.DeleteProject}/>
+        <Header content="Your Projects" />
+        <div class="container">
+          {isLoaded?null:<div class="spin-container"><div class="spinner spinner-grow text-success"></div><h4>Loading...</h4></div>}
+          {this.state.items.map(item =>(
+              <table className="table table-hover">
+            <tbody>
+              <tr>
+                <td id="linkdata">
+                  <article id className="post-137294 post type-post status-publish format-standard hentry category-interview-experiences tag-amazon">
+                    <header className="entry-header">
+                    <Link to={`/ProjectDetails/${item.id}`} >
+                      <h2 className="entry-title">
+                        {item.title}
+                        &nbsp;
+                      </h2>
+                      </Link>
+                    </header>
+                    {/* entry-header */}
+                    <div className="entry-summary">
+                      {/* Ico nic One home page thumbnail with custom excerpt */}
+                      <div className="excerpt-thumb">
+                      </div>
+                      <p>Technologies used:</p>
+                      <p>Criteria:{item.criterion}</p>
+                    </div>
+                    <div>
+                    <Link to={`/ContentsApplicants/${item.id}`}>
+                    <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">See Applicants</button>
+                    </Link>
+                    {item.project_status.id===PROJECT_OPEN?
+                    <button type="button" data-toggle="modal" data-target="#Mymodal" onClick={()=>{this.handleModalClick(item.id,PROJECT_CLOSED)}} id style={{marginTop: '10px!important'}} className="stupo-btn">Close</button>
+                    :
+                    <button type="button" data-toggle="modal" data-target="#Mymodal" onClick={()=>{this.handleModalClick(item.id,PROJECT_OPEN)}} id style={{marginTop: '10px!important'}} className="stupo-btn">Open</button>
+                    }
+                      <button type="button" class="float-right" data-toggle="modal" data-target="#myModal" onClick={()=>{this.handleModalClick(item.id)}} id style={{marginTop: '10px!important'}} className="stupo-btn">Delete</button>
+                    </div>
+                  </article>{/* #post */}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          ))}
+      </div>
      </div>
      )
    }
