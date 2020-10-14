@@ -32,6 +32,16 @@ class Loginform extends React.Component {
     //localStorage.setItem('user_id',"15585")
     //localStorage.setItem('username',"Sailesh")
     //localStorage.setItem('role_id',"3")
+
+    if(localStorage.getItem('role_id')=="3")
+    {
+      localStorage.setItem('role',"student")
+    }
+    else
+    {
+      localStorage.setItem('role',"professor")
+    }
+
     if(this.props.location.state){
       this.setState({
         error : this.props.location.state.error

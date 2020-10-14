@@ -5,6 +5,7 @@ import Header from './Header'
 import Navigationbar from './Navigationbar'
 import {Redirect} from 'react-router-dom';
 import {APPLICATION_ROUTE,APPLICATION_SELECTED,APPLICATION_NOT_SELECTED} from '../Api.js'
+import {ModalSelectProject,ModalOpenProject} from './Modal'
 
 
 class ApplicantDetails extends React.Component {
@@ -26,7 +27,6 @@ class ApplicantDetails extends React.Component {
       application_id:'',
       resume:'',
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 
@@ -54,7 +54,7 @@ class ApplicantDetails extends React.Component {
             project_title:result.project.title,
             phone:result.student.user.telephone1,
             project_id : result.project.id,
-            //student_id: result.student.user.id,
+            student_id: result.student.user.clg_id,
             status: result.application_status.id,
             resume: result.resume,
           })
@@ -63,11 +63,9 @@ class ApplicantDetails extends React.Component {
   }
 
 
-  handleSubmit(e)
+  handleSubmit=(e)=>
   {
-    e.preventDefault();
-    if(window.confirm("Do you want to proceed ?"))
-    {
+    
       let form_data = new FormData();
       form_data.append('project_id',this.state.project_id)
       form_data.append('student_id',this.state.student_id)
@@ -75,9 +73,9 @@ class ApplicantDetails extends React.Component {
 
       let url2 = `http://127.0.0.1:8000/projects/api/applications/${this.state.application_id}/`
       fetch(url2, {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
-             Authorization: `JWT ${localStorage.getItem('token')}`,
+             Authorization: `${localStorage.getItem('token')}`,
          },
         body : form_data
       })
@@ -86,7 +84,11 @@ class ApplicantDetails extends React.Component {
           this.setState({status : APPLICATION_SELECTED})
         }
         )
-    }
+    
+  }
+
+  Alert=(e)=>{
+    console.log("do nothing")
   }
 
   render(){
@@ -108,6 +110,7 @@ class ApplicantDetails extends React.Component {
       <div>
       <Navigationbar/>
       <Header content="Applicant Details"/>
+      <ModalSelectProject handler={this.handleSubmit} />
       <div class="container">
        <div class="card" id="applicant_container" style={{'margin': '3rem 0'}}>
          <section class="project-info-header">Applicant Information</section>
@@ -138,7 +141,7 @@ class ApplicantDetails extends React.Component {
             </div>
          </div>
 
-        {localStorage.getItem('role_id')===4? 
+        {localStorage.getItem('role')==="professor"? 
         <div>       
          <div class="container my-2">
            {this.state.status === APPLICATION_SELECTED
@@ -154,14 +157,15 @@ class ApplicantDetails extends React.Component {
              <div class="col-sm-8">
               {null}
              </div>
-             <div class="col-sm-2">
-               <form onSubmit={this.handleSubmit}>
+
+            
+              
                 {this.state.status === APPLICATION_NOT_SELECTED
-                 ? <button class="btn btn-success" type="submit">Select</button>
+                 ? <button class="btn btn-success" data-toggle="modal" data-target="#myselectModal" >Select</button>
                  :null
                 }
-              </form>
-            </div>
+          
+          
             <div></div>
           </div>
          </div>

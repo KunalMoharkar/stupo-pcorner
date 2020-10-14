@@ -16,7 +16,7 @@ export const ModalOpenProject=(props)=>{
                 <div className="modal-footer">
                     {/*handler from to  handle conformation*/ }
                     <button type="button" className="btn btn-default" onClick={props.handler} data-dismiss="modal">Yes</button>
-                    <button type="button" className="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </div> 
             </div>
@@ -25,7 +25,7 @@ export const ModalOpenProject=(props)=>{
     )
 
 }
-/*project open/close confirm modal*/
+/*project delete confirm modal*/
 export const ModalDeleteProject=(props)=>{
     const id = "myModal";
     return(
@@ -42,12 +42,35 @@ export const ModalDeleteProject=(props)=>{
                 <div className="modal-footer">
                     {/*handler from to  handle conformation*/ }
                     <button type="button" className="btn btn-default" onClick={props.handler} data-dismiss="modal">Yes</button>
-                    <button type="button" className="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </div> 
             </div>
         </div>
         </div>
     )
-
 }
+/*Applicant select confirm modal*/
+export const ModalSelectProject=(props)=>{
+    return(
+        <div className="container">
+        <div className="modal fade" id="myselectModal" role="dialog">
+            <div className="modal-dialog">
+            <div className="modal-content">
+                <div className="modal-header">
+                    <h4 className="modal-title">Confirm Action</h4>
+                </div>
+                <div className="modal-body">
+                     <p>Do you want to Proceed ?</p>
+                </div>
+                <div className="modal-footer">
+                    {/*handler from to  handle conformation*/ }
+                    <button type="button" className="btn btn-default" onClick={props.handler} data-dismiss="modal">Yes</button>
+                    <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div> 
+            </div>
+        </div>
+        </div>
+    )
+} 
