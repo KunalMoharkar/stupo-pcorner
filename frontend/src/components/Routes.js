@@ -16,7 +16,7 @@ import DashboardProfessor from './DashboardProfessor'
 import DashboardStudent from './DashboardStudent'
 import ApplicantDetails from './ApplicantDetails'
 import ProjectDetails from './ProjectDetails'
-import {Modal} from './Modal'
+import {ModalOpenProject} from './Modal'
 
 class Routes extends Component {
     render() {
@@ -40,7 +40,7 @@ class Routes extends Component {
                         <Route exact path={"/DashboardStudent/"}  component={DashboardStudent}/>
                         <Route exact path={"/ApplicantDetails/:application_id"} component={ApplicantDetails}/>
                         <Route exact path={"/ProjectDetails/:project_id"} component={ProjectDetails}/>
-                        <Route exact path={"/modal/"} component={Modal}/>
+                        <Route exact path={"/modal/"} component={ModalOpenProject}/>
                     </Switch>
             </div>
 

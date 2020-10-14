@@ -4,17 +4,78 @@ import Header from './Header'
 import {Link , Redirect} from 'react-router-dom'
 import Navigationbar from './Navigationbar'
 import {PROJECT_ROUTE,PROJECT_OPEN,PROJECT_CLOSED} from '../Api.js'
+import {ModalOpenProject} from './Modal'
 
 class ContentsProfessor extends React.Component {
   constructor(props) {
     super(props)
     this.state={
       isLoaded : false,
+      error: false,
       items :[],
     }
 
   }
 
+  handleRedirect=()=>{
+    return (
+      <Redirect
+        to={{
+          pathname : '/ContentsProfessor',
+        }}
+        />
+    )
+  }
+
+  handleModalClick=(project_id,status)=>{
+    localStorage.setItem('status',status);
+    localStorage.setItem('project_id',project_id);
+  }
+
+
+  ChangeProjectStatus=()=>{
+      
+      const project_id = localStorage.getItem('project_id');
+      const status = localStorage.getItem('status');
+
+      fetch(`${PROJECT_ROUTE}${project_id}/`, {
+        method: 'PUT',
+        headers: {
+            Authorization: `${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+        },
+        body:JSON.stringify( {
+                "professor_id":`${localStorage.getItem('user_id')}`,
+                "project_status_id":status,
+              }),
+      })
+        .then(()=>{
+          window.location.reload(false)
+        })
+        .catch(()=>{
+          console.log("error");
+        })
+  
+  }  
+
+  DeleteProject=()=>{
+
+      const project_id = localStorage.getItem('project_id');
+      
+      fetch(`${PROJECT_ROUTE}${project_id}/`, {
+        method: 'DELETE',
+        headers: {
+          Authorization:`${localStorage.getItem('token')}`
+        },
+      })
+      .then(()=>{
+    
+      })
+      .catch(()=>{
+          console.log("error")
+        })
+    
+  }
 
   componentDidMount() {
     this.fetchdata()
@@ -25,7 +86,7 @@ class ContentsProfessor extends React.Component {
      var that = this
      let url2 =`${PROJECT_ROUTE}?professor_id=${localStorage.getItem('user_id')}`
      fetch(url2, {headers: {
-            Authorization: `JWT ${localStorage.getItem('token')}`
+            Authorization: `${localStorage.getItem('token')}`
 
         }})
        .then(res => res.json())
@@ -80,10 +141,10 @@ class ContentsProfessor extends React.Component {
      return(
        <div>
        <Navigationbar />
+       <ModalOpenProject handler={this.ChangeProjectStatus}/>
        <Header content="Your Projects" />
        <div class="container">
-
-
+       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Mymodal" id="open">Open Modal</button>
         {isLoaded?null:<div class="spin-container"><div class="spinner spinner-grow text-success"></div><h4>Loading...</h4></div>}
        {this.state.items.map(item =>(
            <table className="table table-hover">
@@ -111,12 +172,11 @@ class ContentsProfessor extends React.Component {
                 <Link to={`/ContentsApplicants/${item.id}`}>
                 <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">See Applicants</button>
                 </Link>
-                {item.project_status.id===PROJECT_OPEN?<Link to={`/Closeproject/${item.id}/${PROJECT_CLOSED}`}>
-                <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">Close</button>
-                </Link>:
-                <Link to={`/Closeproject/${item.id}/${PROJECT_OPEN}`}>
-                <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">Open</button>
-                </Link>}
+                {item.project_status.id===PROJECT_OPEN?
+                <button type="button" data-toggle="modal" data-target="#Mymodal" onClick={()=>{this.handleModalClick(item.id,PROJECT_CLOSED)}} id style={{marginTop: '10px!important'}} className="stupo-btn">Close</button>
+                :
+                <button type="button" data-toggle="modal" data-target="#Mymodal" onClick={()=>{this.handleModalClick(item.id,PROJECT_OPEN)}} id style={{marginTop: '10px!important'}} className="stupo-btn">Open</button>
+                }
                   <Link to={`/Deleteproject/${item.id}`} class="float-right">
                   <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">Delete</button>
                   </Link>
@@ -127,10 +187,6 @@ class ContentsProfessor extends React.Component {
         </tbody>
       </table>
        ))}
-
-
-
-
      </div>
      </div>
      )
