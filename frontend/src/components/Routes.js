@@ -40,9 +40,10 @@ class Routes extends Component {
                         <Route exact path={"/DashboardStudent/"}  component={DashboardStudent}/>
                         <Route exact path={"/ApplicantDetails/:application_id"} component={ApplicantDetails}/>
                         <Route exact path={"/ProjectDetails/:project_id"} component={ProjectDetails}/>
-                        <Route exact path={"*"} component={Error404}/>
                         <Route exact path={"/Error500/"} component={Error500}/>
                         <Route exact path={"/Error403/"} component={Error403}/>
+                        {/*Default 404*/}
+                        <Route exact path={"*"} component={Error404}/>
                     </Switch>
             </div>
 

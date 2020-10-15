@@ -48,10 +48,14 @@ class Addprojectform extends React.Component {
 
       let index = event.target.selectedIndex;
       let label = event.target[index].text;
-      this.setState({
-        selected_techs:[...this.state.selected_techs,event.target.value],
-        selected_tech_names:[...this.state.selected_tech_names,label],
-      })
+
+      if(!this.state.selected_techs.includes(event.target.value))
+      {
+        this.setState({
+          selected_techs:[...this.state.selected_techs,event.target.value],
+          selected_tech_names:[...this.state.selected_tech_names,label],
+        })
+      }
     }
 
     handleSubmit(event) {

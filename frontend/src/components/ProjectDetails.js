@@ -13,7 +13,7 @@ class ProjectDetails extends React.Component {
       isLoaded:false,
       posted_by:"",
       title:"",
-      tech_used:"",
+      tech_used:[],
       department:"",
       criterion:"",
       description:"",
@@ -39,7 +39,7 @@ class ProjectDetails extends React.Component {
             isLoaded: true,
             posted_by:result.professor.user.firstname,
             title:result.title,
-            tech_used:"a",
+            tech_used:result.tech_used,
             department:result.professor.user.deptid,
             criterion:result.criterion,
             description:result.description,
@@ -51,11 +51,11 @@ class ProjectDetails extends React.Component {
 
   render(){
 
-    if( localStorage.getItem( 'token') === null){
+    if( localStorage.getItem('token') === null){
        return (
          <Redirect
            to={{
-             pathname : '/',
+             pathname : '/Error403',
              state :  {
                error : "You need to login first"
              }
@@ -78,7 +78,13 @@ class ProjectDetails extends React.Component {
             <img src={img_project} alt="Avatar" id="applicant_img"/>
           </div>
           <div class="col-sm-5">
-             <p class="cart-text"><b className="project-details">Tech used :</b> {this.state.tech_used}</p>
+             <div class="cart-text">Tech used :
+             { this.state.tech_used.map((tech)=>{
+                      return(
+                        <p className="tech-holders">{tech.name}</p>
+                      )
+                    })}
+             </div>
              <p class="cart-text"><b className="project-details">Criterion :</b>{this.state.criterion} </p>
           </div>
           <div class="col-sm-5">
