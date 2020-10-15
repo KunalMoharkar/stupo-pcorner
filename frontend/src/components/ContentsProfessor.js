@@ -14,6 +14,7 @@ class ContentsProfessor extends React.Component {
       isLoaded : false,
       error: false,
       items :[],
+      id:"",
     }
 
   }
@@ -44,12 +45,20 @@ class ContentsProfessor extends React.Component {
                 "project_status_id":status,
               }),
       })
-        .then(()=>{
+        .then(res => {
+          if(!res.ok)
+          {
+            throw res
+          }
+          return res.json()
+        })
+        .then((res)=>{
+          
           /*force page reload*/
-          window.location.reload(false)
+         window.location.reload(false)
         })
         .catch(()=>{
-          console.log("error");
+          this.setState({error:true})
         })
   
   }  
@@ -64,11 +73,18 @@ class ContentsProfessor extends React.Component {
           Authorization:`${localStorage.getItem('token')}`
         },
       })
+      .then(res => {
+        console.log(res.status)
+        if(!(res.status === 204))
+        {
+          throw res
+        }
+      })
       .then(()=>{
         window.location.reload(false)
       })
       .catch(()=>{
-          console.log("error")
+        this.setState({error:true})
         })
     
   }
@@ -95,20 +111,30 @@ class ContentsProfessor extends React.Component {
              })
            },1000);
          },
-       )
+       ).catch(()=>{
+          this.setState({error:true})
+       })
    }
 
    render(){
+
+    {/*Server error*/}
+    if(this.state.error === true){
+      return (
+        <Redirect
+          to={{
+            pathname : '/Error500',
+          }}
+          />
+      )
+    }
 
      {/*Authorzation checks*/}
      if( localStorage.getItem( 'token') === null){
         return (
           <Redirect
             to={{
-              pathname : '/',
-              state :  {
-                error : "You need to login first"
-              }
+              pathname : '/Error403',
             }}
             />
         )
@@ -120,10 +146,7 @@ class ContentsProfessor extends React.Component {
            return(
            <Redirect
              to={{
-               pathname : '/',
-               state :  {
-                 error : "Not authorized"
-               }
+               pathname : '/Error403',
              }}
              />
            )

@@ -733,10 +733,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin-left: 10%;
     margin-bottom: 10%;
 	background-color: white;
-  #border: 1px solid blue ;
-  height: 170px;
-  width: 222px;
-  box-shadow: 5px 5px #afc2d4;
+   border: 1px solid blue ;
+   height: 170px;
+   width: 222px;
+   box-shadow: 5px 5px #afc2d4;
 }
 
 
@@ -1014,15 +1014,13 @@ background-color: #EFEFEF ;
     box-shadow: none;
     border: none;
     margin-top: 4%;
-    #padding: 0.3rem 1rem;
+    padding: 0.3rem 1rem;
     color: #efefef;
-
     background-color: rgba(255,255,255,0.4);
     font-size: 1.4rem;
     width: auto;
     text-transform: uppercase;
     transition: all 0.8s ease;
-
     margin:8px;
     padding:5px;
     padding-left: 10px;
@@ -1194,7 +1192,7 @@ background-color: rgb(24, 31, 69);
  /* End of CSS from ambition box */
 
 .dropbtn {
-    #background-color: #4CAF50;
+    background-color: #4CAF50;
     color: white;
     padding: 16px;
     font-size: 6px;

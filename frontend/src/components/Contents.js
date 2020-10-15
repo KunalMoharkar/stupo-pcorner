@@ -49,24 +49,6 @@ class Contents extends React.Component {
        ).catch(e=>{
 
        })
-
-      // let url = `${APPLICATION_ROUTE}?student_id=${user_id}`;
-       //fetch(url ,{headers: {
-        // Authorization: `JWT ${localStorage.getItem('token')}`
-       //}} )
-       //.then(res => res.json())
-       //.then(data => data.map(item => item.project.id))
-       //.then(data => {
-         //this.setState({
-          // applied_items: data,
-           //isLoadedapp: true,
-         //})
-       //}).catch(e=>{
-
-       //})
-
-
-
    }
 
    render(){
@@ -77,10 +59,7 @@ class Contents extends React.Component {
         return (
           <Redirect
             to={{
-              pathname : '/',
-              state :  {
-                error : "You need to login first"
-              }
+              pathname : '/Error403',
             }}
             />
         )

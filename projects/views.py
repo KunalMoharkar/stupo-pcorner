@@ -153,10 +153,11 @@ class ProjectViewSet(viewsets.ModelViewSet):
         raise Http404
 
     def get_queryset(self):
+        
+            queryset = Project.objects.all().order_by('-pk')
+            professor_id = self.request.query_params.get('professor_id')
+            if professor_id is not None:
+                queryset = queryset.filter(professor__pk=professor_id).order_by('-pk')
 
-        queryset = Project.objects.all().order_by('-pk')
-        professor_id = self.request.query_params.get('professor_id')
-        if professor_id is not None:
-            queryset = queryset.filter(professor__pk=professor_id).order_by('-pk')
-
-        return queryset
+            return queryset
+    

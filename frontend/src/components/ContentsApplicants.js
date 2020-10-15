@@ -61,10 +61,7 @@ class ContentsApplicants extends React.Component {
             return (
               <Redirect
                 to={{
-                  pathname : '/',
-                  state :  {
-                    error : "You need to login first"
-                  }
+                  pathname : '/Error403',
                 }}
                 />
             )
@@ -76,10 +73,7 @@ class ContentsApplicants extends React.Component {
                return(
                <Redirect
                  to={{
-                   pathname : '/',
-                   state :  {
-                     error : "Not authorized"
-                   }
+                   pathname : '/Error403',
                  }}
                  />
                )

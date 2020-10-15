@@ -26,6 +26,7 @@ class ApplicantDetails extends React.Component {
       student_id : '',
       application_id:'',
       resume:'',
+      error:false,
     }
   }
 
@@ -46,7 +47,7 @@ class ApplicantDetails extends React.Component {
           this.setState({
             isLoaded: true,
             name:result.student.user.firstname,
-            enrollment_id:result.student.roll_no,
+            enrollment_id:result.student.user.roll_no,
             email:result.student.user.email,
             department:result.student.user.deptid,
             cgpa:result.student.cgpa,
@@ -60,6 +61,9 @@ class ApplicantDetails extends React.Component {
           })
         },
       )
+      .catch(()=>{
+        this.setState({error:true})
+      })
   }
 
 
@@ -79,19 +83,35 @@ class ApplicantDetails extends React.Component {
          },
         body : form_data
       })
-        .then(res => res.json())
+      .then(res => {
+        if(!res.ok)
+        {
+          throw res
+        }
+        return res.json()
+      })
         .then(res => {
           this.setState({status : APPLICATION_SELECTED})
         }
         )
+        .catch(()=>{
+          this.setState({error:true})
+        })
     
   }
 
-  Alert=(e)=>{
-    console.log("do nothing")
-  }
-
   render(){
+
+     {/*Server error*/}
+     if(this.state.error === true){
+      return (
+        <Redirect
+          to={{
+            pathname : '/Error500',
+          }}
+          />
+      )
+    }
     
     if( localStorage.getItem( 'token') === null){
        return (
