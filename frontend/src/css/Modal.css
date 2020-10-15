@@ -1,0 +1,9 @@
+.modal-title{
+    color: #0d0552 !important;
+    margin: auto !important;
+}
+
+.modal-footer{
+    display: flex !important;
+    justify-content: space-between !important;
+}
