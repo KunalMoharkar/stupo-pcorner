@@ -1,0 +1,27 @@
+.tech-tags-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.tech-tag{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    margin: 3px;
+    color: white;
+    background-color: #2a3360;
+    border-radius: 20px;
+}
+
+
+.fa-custom-times{
+    background-color: #2a3360;
+    margin-left: 4px;
+    font-size: 100px;
+    color:gray;
+    opacity: 0.5;
+}

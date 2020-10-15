@@ -1,8 +1,9 @@
 import React from 'react'
-import '../css/Loginform.css'
+import '../css/Addprojectform.css'
 import Navigationbar from './Navigationbar'
 import {Redirect} from 'react-router-dom';
 import {PROJECT_ROUTE,TECHS_ROUTE,PROJECT_OPEN} from '../Api.js'
+
 
 class Addprojectform extends React.Component {
 
@@ -49,8 +50,8 @@ class Addprojectform extends React.Component {
       let index = event.target.selectedIndex;
       let label = event.target[index].text;
 
-      if(!this.state.selected_techs.includes(event.target.value))
-      {
+        if(!this.state.selected_techs.includes(event.target.value))
+       {
         this.setState({
           selected_techs:[...this.state.selected_techs,event.target.value],
           selected_tech_names:[...this.state.selected_tech_names,label],
@@ -145,6 +146,7 @@ class Addprojectform extends React.Component {
       }
 
 
+
       return (
         <div>
         <Navigationbar />
@@ -159,9 +161,12 @@ class Addprojectform extends React.Component {
               Description:
               <input type="text" name="description" value={this.state.value} onChange={this.handleChange} required/>
               Tech Used:
-              <select id="techs" onChange={this.handleTechSelect}>
+            
+              <select id="techs" className="form-control" onChange={this.handleTechSelect}>
+                <option value="none" selected disabled hidden>
+                    Select a Tech
+                </option>
                 {
-                 
                   this.state.all_techs.map((tech)=>{
                     return(
                     <option value={tech.id} name={tech.name}>{tech.name}</option>
@@ -170,13 +175,14 @@ class Addprojectform extends React.Component {
                 }
               </select>
               <br/>
-              <div>
+              <div className="tech-tags-container">
               { 
                  this.state.selected_tech_names.map((tech)=>{
                    return(
-                   <div >
-                    <p>{tech}</p>
-                    <button type="button" value={tech} onClick={this.handleTechRemove} className="stupo-btn-dark-nohover">{tech}</button>
+                   <div className="tech-tag">
+                    {tech}
+                    <button type="button" class="fa fa-times fa-custom-times " value={tech} onClick={this.handleTechRemove}>
+                    </button>
                    </div>
                    )
                  })
