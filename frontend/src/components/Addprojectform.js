@@ -58,6 +58,15 @@ class Addprojectform extends React.Component {
       }
     }
 
+   handleTechRemove=(event)=>{
+
+      let id = this.state.selected_techs[this.state.selected_tech_names.indexOf(event.target.value)] 
+      this.setState({
+        selected_techs:this.state.selected_techs.filter((tech_id)=>{return(id!=tech_id)}),
+        selected_tech_names:this.state.selected_tech_names.filter((name)=>{return(name!=event.target.value)})
+      })
+   }
+
     handleSubmit(event) {
 	      event.preventDefault();
 	      this.setState({techs_send : this.state.selected_techs.join()})
@@ -165,7 +174,10 @@ class Addprojectform extends React.Component {
               { 
                  this.state.selected_tech_names.map((tech)=>{
                    return(
-                   <button type="button"style={{marginTop:'0px!important'}} className="stupo-btn-dark-nohover">{tech}</button>
+                   <div >
+                    <p>{tech}</p>
+                    <button type="button" value={tech} onClick={this.handleTechRemove} className="stupo-btn-dark-nohover">{tech}</button>
+                   </div>
                    )
                  })
                }
