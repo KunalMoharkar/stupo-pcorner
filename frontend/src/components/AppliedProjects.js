@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Navigationbar from './Navigationbar'
+import img_avatar from '../images/img_avatar.png'
 import {Redirect} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import Header from './Header';
@@ -94,7 +95,7 @@ class AppliedProjects extends React.Component {
           <table className="table table-hover">
         <tbody>
           <tr>
-            <td id="linkdata">
+            <td id="linkdata" style={{'width':'80%'}}>
               <article id className="post-137294 post type-post status-publish format-standard hentry category-interview-experiences tag-amazon">
                 <header className="entry-header">
                 <Link to={`/ApplicantDetails/${item.project.id}`} >
@@ -121,6 +122,10 @@ class AppliedProjects extends React.Component {
                   </Link>
                 </div>
               </article>{/* #post */}
+            </td>
+            <td>
+            <div><img src={img_avatar} alt="Avatar" id="applicant_img"/></div>
+            <div class="text-center" style={{"margin-top":"1rem"}}>Under Prof. Abhishek Jaiswal</div>
             </td>
           </tr>
         </tbody>

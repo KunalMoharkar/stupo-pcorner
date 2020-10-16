@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/Contents.css'
 import Header from './Header'
+import img_avatar from '../images/img_avatar.png'
 import {Link} from 'react-router-dom'
 import Navigationbar from './Navigationbar'
 import {Redirect} from 'react-router-dom';
@@ -82,7 +83,7 @@ class Contents extends React.Component {
            <table className="table table-hover">
         <tbody>
           <tr>
-            <td id="linkdata">
+            <td id="linkdata" style={{'width':'80%'}}>
               <article id className="post-137294 post type-post status-publish format-standard hentry category-interview-experiences tag-amazon">
                 <header className="entry-header">
                 <Link to={`/ProjectDetails/${item.id}`} >
@@ -125,6 +126,10 @@ class Contents extends React.Component {
                   </Link>
                 </div>
               </article>{/* #post */}
+            </td>
+            <td>
+            <div><img src={img_avatar} alt="Avatar" id="applicant_img"/></div>
+            <div class="text-center" style={{"margin-top":"1rem"}}>Under Prof. Abhishek Jaiswal</div>
             </td>
           </tr>
         </tbody>
