@@ -193,7 +193,7 @@ class ContentsProfessor extends React.Component {
                     {item.project_status.id===PROJECT_OPEN?
                     <button type="button" data-toggle="modal" data-target="#Mymodal" onClick={()=>{this.handleModalClick(item.id,PROJECT_CLOSED)}} id style={{marginTop: '10px!important'}} className="stupo-btn">Close</button>
                     :
-                    <button type="button" data-toggle="modal" data-target="#Mymodal" onClick={()=>{this.handleModalClick(item.id,PROJECT_OPEN)}} id style={{marginTop: '10px!important'}} className="stupo-btn">Open</button>
+                    <button type="button" data-toggle="modal" data-target="#Mymodal" onClick={()=>{this.handleModalClick(item.id,PROJECT_OPEN)}} id style={{marginTop: '10px!important'}} className="stupo-btn-dark">Open</button>
                     }
                       <button type="button" class="float-right" data-toggle="modal" data-target="#myModal" onClick={()=>{this.handleModalClick(item.id)}} id style={{marginTop: '10px!important'}} className="stupo-btn">Delete</button>
                     </div>

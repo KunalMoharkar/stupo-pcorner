@@ -121,7 +121,7 @@ class Contents extends React.Component {
                     )
                     :  <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn-dark-nohover">Closed</button>
                   }
-                  <Link to={`/ProjectDetails/${item.id}`} class="float-right">
+                  <Link to={`/ProjectDetails/${item.id}`}>
                   <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">Details</button>
                   </Link>
                 </div>
