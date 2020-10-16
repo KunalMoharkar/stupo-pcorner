@@ -84,9 +84,9 @@ CORS_ORIGIN_WHITELIST = ('http://localhost:3000',)
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'stupo',
-        'USER': 'kunal',
-        'PASSWORD': 'root',
+        'NAME': 'pcornerdb',
+        'USER': 'pcornerdbuser',
+        'PASSWORD': 'Qwerty@123',
         'HOST': 'localhost',
         'PORT': '3306',
     }
