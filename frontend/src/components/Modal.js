@@ -4,7 +4,7 @@ import '../css/Modal.css';
 export const ModalOpenProject=(props)=>{
     return(
         <div className="container">
-        <div className="modal fade" id="Mymodal"  role="dialog">
+        <div className="modal" id="Mymodal"  role="dialog">
             <div className="modal-dialog">
             <div className="modal-content">
                 <div className="modal-header">
@@ -23,14 +23,13 @@ export const ModalOpenProject=(props)=>{
         </div>
         </div>
     )
-
 }
 /*project delete confirm modal*/
 export const ModalDeleteProject=(props)=>{
     const id = "myModal";
     return(
         <div className="container">
-        <div className="modal fade" id="myModal" role="dialog">
+        <div className="modal" id="myModal" role="dialog">
             <div className="modal-dialog">
             <div className="modal-content">
                 <div className="modal-header">
@@ -54,7 +53,7 @@ export const ModalDeleteProject=(props)=>{
 export const ModalSelectProject=(props)=>{
     return(
         <div className="container">
-        <div className="modal fade" id="myselectModal" role="dialog">
+        <div className="modal" id="myselectModal" role="dialog">
             <div className="modal-dialog">
             <div className="modal-content">
                 <div className="modal-header">
@@ -64,7 +63,7 @@ export const ModalSelectProject=(props)=>{
                      <p>Do you want to Proceed ?</p>
                 </div>
                 <div className="modal-footer">
-                    {/*handler from to  handle conformation*/ }
+                    {/*handler from to  handle conformation*/}
                     <button type="button" className="btn btn-default" onClick={props.handler} data-dismiss="modal">Yes</button>
                     <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>

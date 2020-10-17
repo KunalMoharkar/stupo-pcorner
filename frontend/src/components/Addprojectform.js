@@ -3,6 +3,7 @@ import '../css/Addprojectform.css'
 import Navigationbar from './Navigationbar'
 import {Redirect} from 'react-router-dom';
 import {PROJECT_ROUTE,TECHS_ROUTE,PROJECT_OPEN} from '../Api.js'
+import {ModalSelectProject} from './Modal'
 
 
 class Addprojectform extends React.Component {
@@ -150,12 +151,13 @@ class Addprojectform extends React.Component {
       return (
         <div>
         <Navigationbar />
+        <ModalSelectProject handler={this.handleSubmit} />
         <div class="container p-3">
         <div class="form-container">
             <div class="form-header">
               <h4>Enter Project Details</h4>
             </div>
-            <form onSubmit={this.handleSubmit}>
+            <div>
               Title:
               <input type="text" name="title" value={this.state.value} onChange={this.handleChange} required/>
               Description:
@@ -192,8 +194,8 @@ class Addprojectform extends React.Component {
               <input type="text" name="criterion" value={this.state.value} onChange={this.handleChange} required />
 
               <br/>
-              <input class="btn btn-primary" type="submit" value="Add"/>
-            </form>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#myselectModal">Add</button>
+            </div>
         </div>
           <br />
           <div>{message_alert()}</div>
