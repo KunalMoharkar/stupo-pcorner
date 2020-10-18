@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/Addprojectform.css'
 import Navigationbar from './Navigationbar'
+import Header from './Header';
 import {Redirect} from 'react-router-dom';
 import {PROJECT_ROUTE,TECHS_ROUTE,PROJECT_OPEN} from '../Api.js'
 
@@ -150,17 +151,15 @@ class Addprojectform extends React.Component {
       return (
         <div>
         <Navigationbar />
+        <Header content="Project Details" />
         <div class="container p-3">
         <div class="form-container">
-            <div class="form-header">
-              <h4>Enter Project Details</h4>
-            </div>
             <form onSubmit={this.handleSubmit}>
-              Title:
+              Title
               <input type="text" name="title" value={this.state.value} onChange={this.handleChange} required/>
-              Description:
+              Description
               <input type="text" name="description" value={this.state.value} onChange={this.handleChange} required/>
-              Tech Used:
+              Tech Used
             
               <select id="techs" className="form-control" onChange={this.handleTechSelect}>
                 <option value="none" selected disabled hidden>
@@ -188,11 +187,11 @@ class Addprojectform extends React.Component {
                  })
                }
               </div> 
-              Criterion:
+              Criterion
               <input type="text" name="criterion" value={this.state.value} onChange={this.handleChange} required />
 
               <br/>
-              <input class="btn btn-primary" type="submit" value="Add"/>
+              <center><input type="submit" className="btn stupo-btn" value="Create Project" name="submit" /></center>
             </form>
         </div>
           <br />

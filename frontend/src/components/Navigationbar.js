@@ -108,7 +108,7 @@ class Navigationbar extends React.Component {
 
   render(){
     return(
-        <nav className="navbar navbar-default navbar-expand-lg">
+        <nav className="navbar navbar-default navbar-expand-lg fixed-top">
     <div className="navbar-header">
     <button className="navbar-toggle" id="button-mobile" style={{float: 'left !important'}} type="button">
     <i className="material-icons" id="menu" style={{fontSize: '30px'}}>menu</i>

@@ -94,8 +94,8 @@ class ContentsApplicants extends React.Component {
            <thead class="thead-dark">
                <tr>
                  <th>Name</th>
-                 <th>Enrollment Id</th>
-                 <th>Department</th>
+                 <th class="mobile-hide">Enrollment Id</th>
+                 <th class="mobile-hide">Department</th>
                  <th>Application Details</th>
                  <th>Status</th>
                </tr>
@@ -105,8 +105,8 @@ class ContentsApplicants extends React.Component {
 
         <tr className="tr-hover">
           <td>{item.student.user.firstname}</td>
-          <td>{item.student.user.roll_no}</td>
-          <td>{item.student.user.deptid}</td>
+          <td class="mobile-hide">{item.student.user.roll_no}</td>
+          <td class="mobile-hide">{item.student.user.deptid}</td>
           <td><Link to={`/ApplicantDetails/${item.id}`} class="stupo-btn" style={{'text-decoration': 'none'}}>View</Link></td>
           {
           item.application_status.id=='4'?(

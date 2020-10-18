@@ -613,6 +613,7 @@ h1, h2, h3, h4, h5, h6 {
 .table{
 	transition: all .25s ease;
 	margin-bottom: 30px !important;
+	border-color: #000;
 	cursor: pointer;
 
 }
@@ -1149,7 +1150,7 @@ input.search-company::-webkit-input-placeholder {
 
 .cover-image {
     width: 94%;
-    margin: 25px 3%;
+    margin: 80px 3%;
     border-radius: 4px;
     padding: 1rem 1.2rem;
     text-align: center;
@@ -2180,3 +2181,8 @@ select:focus,textarea:focus,button:focus{
 		 transform: translate3d(5px, 0, 0);
 	}
 }
+@media only screen and (max-width: 900px) {
+        .mobile-hide{
+            display: none;
+        }
+    }

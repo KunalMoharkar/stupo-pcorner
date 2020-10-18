@@ -148,7 +148,7 @@ class Applicationform extends React.Component {
              <label htmlFor="resume">Upload Resume</label>
             <input type="file" name="file-upload-field" id="resume" onChange = {this.handleResumeChange} required multiple="multiple"/>
             <div class="file-dummy">
-              <div class="success">Great, your resume is selected. Keep on.</div>
+              <div class="success">File uploaded successfully</div>
               <div class="default">Please select some files</div>
             </div>
           </div>

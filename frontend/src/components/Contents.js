@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/Contents.css'
+import '../css/tags.css'
 import Header from './Header'
 import img_avatar from '../images/img_avatar.png'
 import {Link} from 'react-router-dom'
@@ -100,26 +101,27 @@ class Contents extends React.Component {
                   </div>
                 
                   <div className="techs-container">
-                    <p>
-                      Technologies used:
-                    </p>
+                    <ul class="tags-tech">
                     {item.tech_used.map((tech)=>{
                       return(
-                        <p className="tech-holders">{tech.name}</p>
-                      )
+                             <li><a href="#" class="tag-tech" style={{'text-decoration': 'none',}}>{tech.name}</a></li>
+                             )
                     })}
+                    </ul>
                   </div>
                   <p>Criteria:{item.criterion}</p>
                 </div>
                 <div>
                   {
-                    item.project_status.id=="1"?(
+                    item.project_status.id=="1" && localStorage.getItem('role')=='student'?(
                       this.state.applied_items.includes(item.id) ? <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn-dark-nohover">Applied</button>
                       :<Link to={`/Applicationform/${item.id}`}>
                       <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">Apply</button>
                       </Link>
                     )
-                    :  <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn-dark-nohover">Closed</button>
+                    :localStorage.getItem('role')=='student'?
+                    <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn-dark-nohover">Closed</button>
+                    :null
                   }
                   <Link to={`/ProjectDetails/${item.id}`}>
                   <button type="button" id style={{marginTop: '10px!important'}} className="stupo-btn">Details</button>
@@ -129,7 +131,7 @@ class Contents extends React.Component {
             </td>
             <td>
             <div><img src={img_avatar} alt="Avatar" id="applicant_img"/></div>
-            <div class="text-center" style={{"margin-top":"1rem"}}>Under Prof. Abhishek Jaiswal</div>
+            <div class="text-center" style={{"margin-top":"1rem"}}>Under Prof. {item.professor.user.firstname} {item.professor.user.lastname}</div>
             </td>
           </tr>
         </tbody>
