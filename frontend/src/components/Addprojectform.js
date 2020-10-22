@@ -4,6 +4,7 @@ import Navigationbar from './Navigationbar'
 import Header from './Header';
 import {Redirect} from 'react-router-dom';
 import {PROJECT_ROUTE,TECHS_ROUTE,PROJECT_OPEN} from '../Api.js'
+import {ModalSelectProject} from './Modal'
 
 
 class Addprojectform extends React.Component {
@@ -151,6 +152,7 @@ class Addprojectform extends React.Component {
       return (
         <div>
         <Navigationbar />
+        <ModalSelectProject handler={this.handleSubmit} />
         <Header content="Add New Project" />
         <div class="container p-3">
         <div class="form-container">
@@ -191,7 +193,7 @@ class Addprojectform extends React.Component {
               <input type="text" name="criterion" value={this.state.value} onChange={this.handleChange} required />
 
               <br/>
-              <center><input type="submit" className="btn stupo-btn" value="Create Project" name="submit" /></center>
+              <center><button type="submit" className="btn stupo-btn" data-toggle="modal" data-target="#myselectModal" name="submit" /></center>
             </form>
         </div>
           <br />

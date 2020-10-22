@@ -155,14 +155,13 @@ class Applicationform extends React.Component {
           </div>
         </div>
         <br />
-        <center><input type="submit" className="btn stupo-btn" value="Submit Application" name="submit" /></center>
+        <center><button type="submit" className="btn stupo-btn" data-toggle="modal" data-target="#myselectModal" name="submit" /></center>
         <br /><br />
       </div>
     </div>
   </div>
 </form>
             <br/>
-            {message_alert()}
         </div>
         </div>
 
