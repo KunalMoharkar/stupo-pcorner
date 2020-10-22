@@ -104,12 +104,13 @@ class Contents extends React.Component {
                     <ul class="tags-tech">
                     {item.tech_used.map((tech)=>{
                       return(
-                             <li><a href="#" class="tag-tech" style={{'text-decoration': 'none',}}>{tech.name}</a></li>
+                             <li><div class="tag-tech" style={{'text-decoration': 'none',}}>{tech.name}</div></li>
                              )
                     })}
                     </ul>
                   </div>
-                  <p>Criteria:{item.criterion}</p>
+                      <span class="entry-title" style={{'font-size': '2.2rem'}}><br/>[Criteria]<span style={{'color':'#555','font-size':'75%'}}>{item.criterion}</span></span>
+
                 </div>
                 <div>
                   {

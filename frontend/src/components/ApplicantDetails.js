@@ -138,10 +138,10 @@ class ApplicantDetails extends React.Component {
         <div class="row">
 
           <div class="col-sm-2">
-          <div class="row justify-content-center">
+          <div class="row row-center">
             <img src={img_avatar} alt="Avatar" id="applicant_img"/>
           </div>
-          <div class="row justify-content-center">
+          <div class="row row-center">
             <a style={{'text-decoration': 'none'}} href={this.state.resume} target="blank" class="stupo-btn">View Resume</a>
             <div class="float-right">
             {localStorage.getItem('role')==="professor"?

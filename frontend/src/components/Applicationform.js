@@ -135,14 +135,14 @@ class Applicationform extends React.Component {
     <div className="row justify-content-center">
       <div className=" col-md-10 col-xs-12 mid-content editprofile_form">
         <br />
-        <div className="row justify-content-center">
+        <div className="row row-center">
           <div className="col-md-12 col-xs-12 col-margin">
             <label htmlFor="statement_of_purpose">Your Statement of Purpose</label>
             <textarea rows="5" type="text" required onChange={this.handleChange} className="form-control" value={this.state.value} name="statement_of_purpose" />
           </div>
         </div>
         <br />
-        <div className="row justify-content-center">
+        <div className="row row-center">
           <div className="col-md-6 col-xs-6 col-margin">
             <div class="form-group file-area">
              <label htmlFor="resume">Upload Resume</label>

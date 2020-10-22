@@ -82,7 +82,7 @@ class ProjectDetails extends React.Component {
              <p className="tech-holders">
              <ul class="tags-tech">
              { this.state.tech_used.map((tech)=>{
-                      return(<li><a href="#" class="tag-tech" style={{'text-decoration': 'none',}}>{tech.name}</a></li>
+                      return(<li><div class="tag-tech" style={{'text-decoration': 'none',}}>{tech.name}</div></li>
                       )
                     })}
                     </ul>

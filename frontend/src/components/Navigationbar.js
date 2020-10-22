@@ -127,7 +127,7 @@ class Navigationbar extends React.Component {
     }
     <li><a href="https://studentportal.vnit.ac.in/testimonials">Testimonials</a></li>
     <li class="dropdown login">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Hey! {localStorage.getItem('username')}</a>
                     <ul class="dropdown-menu">
                         <li><a href="/dashboard/{{ clg_id | urlencrypt }}/"><i class="material-icons">dashboard</i>Dashboard</a>

@@ -110,8 +110,16 @@ class AppliedProjects extends React.Component {
                   {/* Ico nic One home page thumbnail with custom excerpt */}
                   <div className="excerpt-thumb">
                   </div>
-                  <p>Technologies used:</p>
-                  <p>Criteria:{item.project.criterion}</p>
+                  <div className="techs-container">
+                    <ul class="tags-tech">
+                    {item.project.tech_used.map((tech)=>{
+                      return(
+                             <li><div class="tag-tech" style={{'text-decoration': 'none',}}>{tech.name}</div></li>
+                             )
+                    })}
+                    </ul>
+                  </div>
+                      <span class="entry-title" style={{'font-size': '2.2rem'}}><br/>[Criteria]<span style={{'color':'#555','font-size':'75%'}}>{item.criterion}</span></span>
                 </div>
                 <div>
                   <Link to={`/ProjectDetails/${item.project.id}`} class="float-right">

@@ -90,7 +90,7 @@ class ContentsApplicants extends React.Component {
          <div class="container">
           {isLoaded?
             <div>
-           <table class="table" style={{'margin-top': '5rem'}}>
+           <table class="table">
            <thead class="thead-dark">
                <tr>
                  <th>Name</th>
@@ -121,6 +121,9 @@ class ContentsApplicants extends React.Component {
 
              </tbody>
         </table>
+        { this.state.items?null
+            :<p>Oops!</p>
+            }
         </div>
         :<div class="spin-container"><div class="spinner spinner-grow text-success"></div><h4>Loading...</h4></div>}
        </div>
