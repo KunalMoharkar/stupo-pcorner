@@ -151,7 +151,7 @@ class Addprojectform extends React.Component {
       return (
         <div>
         <Navigationbar />
-        <Header content="Project Details" />
+        <Header content="Add New Project" />
         <div class="container p-3">
         <div class="form-container">
             <form onSubmit={this.handleSubmit}>
@@ -161,7 +161,7 @@ class Addprojectform extends React.Component {
               <input type="text" name="description" value={this.state.value} onChange={this.handleChange} required/>
               Tech Used
             
-              <select id="techs" className="form-control" onChange={this.handleTechSelect}>
+              <select id="techs" className="form-control" style={{'font-size': '1.6rem'}} onChange={this.handleTechSelect}>
                 <option value="none" selected disabled hidden>
                     Select a Tech
                 </option>
@@ -178,7 +178,7 @@ class Addprojectform extends React.Component {
               { 
                  this.state.selected_tech_names.map((tech)=>{
                    return(
-                   <div className="tech-tag">
+                   <div className="tag-tech">
                     {tech}
                     <button type="button" class="fa fa-times fa-custom-times " value={tech} onClick={this.handleTechRemove}>
                     </button>
