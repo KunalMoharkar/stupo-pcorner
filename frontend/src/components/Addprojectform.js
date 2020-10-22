@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/Addprojectform.css'
 import Navigationbar from './Navigationbar'
+import Header from './Header';
 import {Redirect} from 'react-router-dom';
 import {PROJECT_ROUTE,TECHS_ROUTE,PROJECT_OPEN} from '../Api.js'
 import {ModalSelectProject} from './Modal'
@@ -152,19 +153,17 @@ class Addprojectform extends React.Component {
         <div>
         <Navigationbar />
         <ModalSelectProject handler={this.handleSubmit} />
+        <Header content="Add New Project" />
         <div class="container p-3">
         <div class="form-container">
-            <div class="form-header">
-              <h4>Enter Project Details</h4>
-            </div>
-            <div>
-              Title:
+            <form onSubmit={this.handleSubmit}>
+              Title
               <input type="text" name="title" value={this.state.value} onChange={this.handleChange} required/>
-              Description:
+              Description
               <input type="text" name="description" value={this.state.value} onChange={this.handleChange} required/>
-              Tech Used:
+              Tech Used
             
-              <select id="techs" className="form-control" onChange={this.handleTechSelect}>
+              <select id="techs" className="form-control" style={{'font-size': '1.6rem'}} onChange={this.handleTechSelect}>
                 <option value="none" selected disabled hidden>
                     Select a Tech
                 </option>
@@ -181,7 +180,7 @@ class Addprojectform extends React.Component {
               { 
                  this.state.selected_tech_names.map((tech)=>{
                    return(
-                   <div className="tech-tag">
+                   <div className="tag-tech">
                     {tech}
                     <button type="button" class="fa fa-times fa-custom-times " value={tech} onClick={this.handleTechRemove}>
                     </button>
@@ -190,12 +189,12 @@ class Addprojectform extends React.Component {
                  })
                }
               </div> 
-              Criterion:
+              Criterion
               <input type="text" name="criterion" value={this.state.value} onChange={this.handleChange} required />
 
               <br/>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#myselectModal">Add</button>
-            </div>
+              <center><button type="submit" className="btn stupo-btn" data-toggle="modal" data-target="#myselectModal" name="submit" /></center>
+            </form>
         </div>
           <br />
           <div>{message_alert()}</div>

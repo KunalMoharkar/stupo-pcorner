@@ -36,5 +36,9 @@
     "bootstrap": "^4.5.0",
     "bootstrap-select": "^1.13.18",
     "react-bootstrap": "^1.0.1"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

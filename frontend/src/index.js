@@ -4,7 +4,7 @@ import * as serviceWorker from './serviceWorker';
 import Routes from './components/Routes'
 import {BrowserRouter} from 'react-router-dom'
 import Footer from "./components/Footer"
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 
 ReactDOM.render(

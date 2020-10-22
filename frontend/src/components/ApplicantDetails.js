@@ -138,12 +138,32 @@ class ApplicantDetails extends React.Component {
         <div class="row">
 
           <div class="col-sm-2">
+          <div class="row row-center">
             <img src={img_avatar} alt="Avatar" id="applicant_img"/>
+          </div>
+          <div class="row row-center">
+            <a style={{'text-decoration': 'none'}} href={this.state.resume} target="blank" class="stupo-btn">View Resume</a>
+            <div class="float-right">
+            {localStorage.getItem('role')==="professor"?
+               <form onSubmit={this.handleSubmit}>
+                {this.state.status === APPLICATION_NOT_SELECTED
+                 ? <button class="stupo-btn" style={{'float': 'right'}} data-toggle="modal" data-target="#myselectModal">Select</button>
+                 :null
+                }
+              </form>
+              :null
+              }
+            </div>
+            </div>
           </div>
           <div class="col-sm-5">
              <p class="cart-text"><b className="project-details">Enrollment Id :</b>{this.state.enrollment_id} </p>
              <p class="cart-text"><b className="project-details">Name :</b> {this.state.name}</p>
              <p class="cart-text"><b className="project-details">Project :</b>{this.state.project_title} </p>
+             {this.state.status === APPLICATION_SELECTED
+            ? <p class="cart-text"><b className="project-details">Status : </b><b style={{'color': 'green'}}>Selected</b></p>
+            : <p class="cart-text"><b className="project-details">Status : </b><b style={{'color': 'red'}}>Not selected</b></p>
+            }
            </div>
            <div class="col-sm-5">
               <p class="cart-text"><b className="project-details">Department :</b>{this.state.department}</p>
@@ -161,39 +181,7 @@ class ApplicantDetails extends React.Component {
             </div>
          </div>
 
-        {localStorage.getItem('role')==="professor"? 
-        <div>       
-         <div class="container my-2">
-           {this.state.status === APPLICATION_SELECTED
-            ? <div class="alert alert-success">You have selected this student !</div>
-            :  <div class="alert alert-info">You have not selected this student yet </div>
-            }
-         </div>
-         <div>
-            <div class="row">
-             <div class="col-sm-2">
-              <a href={this.state.resume} target="blank" class="btn btn-dark">View Resume</a>
-             </div>
-             <div class="col-sm-8">
-              {null}
-             </div>
 
-            
-              
-                {this.state.status === APPLICATION_NOT_SELECTED
-                 ? <button class="btn btn-success" data-toggle="modal" data-target="#myselectModal" >Select</button>
-                 :null
-                }
-          
-          
-            <div></div>
-          </div>
-         </div>
-         </div>
-         : 
-         <div>
-         <a href={this.state.resume} target="blank" style={{marginTop: '10px!important'}} className="stupo-btn">View Resume</a>
-        </div>}
        </div>
       </div>
     )

@@ -86,43 +86,44 @@ class ContentsApplicants extends React.Component {
     return(
         <div>
           <Navigationbar />
+          <Header content="Applicants" />
          <div class="container">
-           <Header content="Applicants" />
           {isLoaded?
             <div>
-            <div class="form-group">
-            <label for="cars"><b>Filter:</b></label>
-            <select class="form-control" id="cars" onChange={this.handleChange}>
-              <option value="none" selected disabled hidden>
-                  Select an Option
-              </option>
-                <option value="all">All</option>
-                <option value="selected">Selected</option>
-                <option value="Not selected">Not Selected</option>
-            </select>
-          </div>
-           <table class="table table-hover">
+           <table class="table">
            <thead class="thead-dark">
                <tr>
                  <th>Name</th>
-                 <th>Enrollment Id</th>
-                 <th>Department</th>
-                 <th>Details</th>
+                 <th class="mobile-hide">Enrollment Id</th>
+                 <th class="mobile-hide">Department</th>
+                 <th>Application Details</th>
+                 <th>Status</th>
                </tr>
              </thead>
            <tbody>
          {this.state.items.map(item =>(
 
-        <tr>
+        <tr className="tr-hover">
           <td>{item.student.user.firstname}</td>
-          <td>{item.student.user.roll_no}</td>
-          <td>{item.student.user.deptid}</td>
-          <td><Link to={`/ApplicantDetails/${item.id}`} class="btn btn-dark">Details</Link></td>
+          <td class="mobile-hide">{item.student.user.roll_no}</td>
+          <td class="mobile-hide">{item.student.user.deptid}</td>
+          <td><Link to={`/ApplicantDetails/${item.id}`} class="stupo-btn" style={{'text-decoration': 'none'}}>View</Link></td>
+          {
+          item.application_status.id=='4'?(
+          <td style={{"color":"red"}}>Not Selected</td>
+          )
+          :(
+          <td style={{"color":"green"}}>Selected</td>
+          )
+          }
         </tr>
        ))}
 
              </tbody>
         </table>
+        { this.state.items?null
+            :<p>Oops!</p>
+            }
         </div>
         :<div class="spin-container"><div class="spinner spinner-grow text-success"></div><h4>Loading...</h4></div>}
        </div>

@@ -1,3 +1,9 @@
+label.application-form {
+font-size: 1.2rem;
+font-weight: 2rem;
+color: #2a3360;
+}
+
 .file-area {
 	 width: 100%;
 	 position: relative;

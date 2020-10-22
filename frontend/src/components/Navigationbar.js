@@ -1,5 +1,4 @@
 import React from 'react'
-import '../css/Navigationbar.css'
 import {Link} from "react-router-dom";
 
 class Navbrand extends React.Component {
@@ -109,12 +108,41 @@ class Navigationbar extends React.Component {
 
   render(){
     return(
-        <nav class="navbar navbar-expand-md ">
-          <Navbrand />
-          <CollapseButton />
-          <Navlinks/>
-
-        </nav>
+        <nav className="navbar navbar-default navbar-expand-lg fixed-top">
+    <div className="navbar-header">
+    <button className="navbar-toggle" id="button-mobile" style={{float: 'left !important'}} type="button">
+    <i className="material-icons" id="menu" style={{fontSize: '30px'}}>menu</i>
+    <i className="material-icons" id="close" style={{fontSize: '30px', display: 'none'}}>close</i>
+    </button>
+    </div>
+    <div className="collapse navbar-collapse" id="navbar-mobile">
+    <ul className="nav navbar-nav mx-auto" style={{margin: '0 !important'}}>
+    <li><a href="https://studentportal.vnit.ac.in/home">Home <span className="sr-only">(current)</span></a></li>
+    <li><a href="https://studentportal.vnit.ac.in/home/aboutus">About</a></li>
+    <li><a href="https://studentportal.vnit.ac.in/experiences">Experiences</a></li>
+    <li><a href="https://studentportal.vnit.ac.in/clubs/">Clubs</a></li>
+    { localStorage.getItem('role')==='student'
+    ? <li><a href="/DashboardStudent/">Project Corner</a></li>
+    : <li><a href="/DashboardProfessor/">Project Corner</a></li>
+    }
+    <li><a href="https://studentportal.vnit.ac.in/testimonials">Testimonials</a></li>
+    <li class="dropdown login">
+                    <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Hey! {localStorage.getItem('username')}</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/dashboard/{{ clg_id | urlencrypt }}/"><i class="material-icons">dashboard</i>Dashboard</a>
+                        </li>
+                        <li><a href="/home/contribute"><i
+                                class="material-icons">post_add</i>Add Experience</a></li>
+                        <li><a href="/home/add_testimonial"><i
+                                class="material-icons">feedback</i>Add Testimonial</a></li>
+                        <li><a href="/logout"><i class="material-icons">launch</i>Logout</a>
+                        </li>
+                    </ul>
+    </li>
+    </ul>
+    </div>
+    </nav>
     )
   }
 }

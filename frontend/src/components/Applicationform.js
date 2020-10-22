@@ -4,8 +4,7 @@ import '../css/Loginform.css'
 import '../css/applicationform.css'
 import Navigationbar from './Navigationbar'
 import {Redirect} from 'react-router-dom';
-import {APPLICATION_ROUTE} from '../Api.js';
-import {ModalSelectProject} from './Modal'
+import {APPLICATION_ROUTE} from '../Api.js'
 
 
 class Applicationform extends React.Component {
@@ -126,45 +125,43 @@ class Applicationform extends React.Component {
       return (
         <div>
         <Navigationbar />
-        <ModalSelectProject handler={this.handleSubmit} />
         <Header content="Enter Your Details"/>
         <div class="container p-3">
 
 
 
-      <div>
-        <div className="container experience-content">
-          <div className="row justify-content-center">
-            <div className=" col-md-10 col-xs-12 mid-content editprofile_form">
-              <br />
-              <div className="row justify-content-center">
-                <div className="col-md-12 col-xs-12 col-margin">
-                  <label htmlFor="statement_of_purpose">Your Statement of Purpose</label>
-                  <textarea rows="5" type="text" required onChange={this.handleChange} className="form-control" value={this.state.value} name="statement_of_purpose" />
-                </div>
-              </div>
-              <br />
-              <div className="row justify-content-center">
-                <div className="col-md-6 col-xs-6 col-margin">
-                  <div class="form-group file-area">
-                  <label htmlFor="resume">Upload Resume</label>
-                  <input type="file" name="file-upload-field" id="resume" onChange = {this.handleResumeChange} required multiple="multiple"/>
-                  <div class="file-dummy">
-                    <div class="success">Great, your resume is selected. Keep on.</div>
-                    <div class="default">Please select some files</div>
-                  </div>
-                </div>
-                </div>
-              </div>
-              <br />
-              <center><button type="submit" className="btn stupo-btn" data-toggle="modal" data-target="#myselectModal">Submit Application</button></center>
-              <br /><br />
-            </div>
+        <form method="post" name="application_form" onSubmit={this.handleSubmit}>
+  <div className="container experience-content">
+    <div className="row justify-content-center">
+      <div className=" col-md-10 col-xs-12 mid-content editprofile_form">
+        <br />
+        <div className="row row-center">
+          <div className="col-md-12 col-xs-12 col-margin">
+            <label htmlFor="statement_of_purpose">Your Statement of Purpose</label>
+            <textarea rows="5" type="text" required onChange={this.handleChange} className="form-control" value={this.state.value} name="statement_of_purpose" />
           </div>
         </div>
+        <br />
+        <div className="row row-center">
+          <div className="col-md-6 col-xs-6 col-margin">
+            <div class="form-group file-area">
+             <label htmlFor="resume">Upload Resume</label>
+            <input type="file" name="file-upload-field" id="resume" onChange = {this.handleResumeChange} required multiple="multiple"/>
+            <div class="file-dummy">
+              <div class="success">File uploaded successfully</div>
+              <div class="default">Please select some files</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <br />
+        <center><button type="submit" className="btn stupo-btn" data-toggle="modal" data-target="#myselectModal" name="submit" /></center>
+        <br /><br />
       </div>
+    </div>
+  </div>
+</form>
             <br/>
-            {message_alert()}
         </div>
         </div>
 

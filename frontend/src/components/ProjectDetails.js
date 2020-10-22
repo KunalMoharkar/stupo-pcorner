@@ -78,12 +78,15 @@ class ProjectDetails extends React.Component {
             <img src={img_project} alt="Avatar" id="applicant_img"/>
           </div>
           <div class="col-sm-5">
-             <div class="cart-text">Tech used :
+             <div class="cart-text">
+             <p className="tech-holders">
+             <ul class="tags-tech">
              { this.state.tech_used.map((tech)=>{
-                      return(
-                        <p className="tech-holders">{tech.name}</p>
+                      return(<li><div class="tag-tech" style={{'text-decoration': 'none',}}>{tech.name}</div></li>
                       )
                     })}
+                    </ul>
+                    </p>
              </div>
              <p class="cart-text"><b className="project-details">Criterion :</b>{this.state.criterion} </p>
           </div>

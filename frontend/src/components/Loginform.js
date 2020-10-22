@@ -26,12 +26,12 @@ class Loginform extends React.Component {
 
   componentDidMount() {
     localStorage.setItem('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imt1bmFsIiwicGFzc3dvcmQiOiIyMjI0MSJ9.Z11xYNZXUbafdJqxZpqnzai9iLnUxIQT3aILGnZ9geU")
-    //localStorage.setItem('user_id',"22241")
-    //localStorage.setItem('username',"kunal")
-    //localStorage.setItem('role_id',"4")
-    localStorage.setItem('user_id',"15585")
-    localStorage.setItem('username',"Sailesh")
-    localStorage.setItem('role_id',"3")
+    localStorage.setItem('user_id',"22241")
+    localStorage.setItem('username',"kunal")
+    localStorage.setItem('role_id',"4")
+//    localStorage.setItem('user_id',"15585")
+//    localStorage.setItem('username',"Sailesh")
+//    localStorage.setItem('role_id',"3")
 
     if(localStorage.getItem('role_id')=="3")
     {
