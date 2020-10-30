@@ -110,7 +110,7 @@ class Navigationbar extends React.Component {
     return(
         <nav className="navbar navbar-default navbar-expand-lg fixed-top">
     <div className="navbar-header">
-    <button className="navbar-toggle" id="button-mobile" style={{float: 'left !important'}} type="button">
+    <button className="navbar-toggle" id="button-mobile" style={{'float': 'left'}} type="button">
     <i className="material-icons" id="menu" style={{fontSize: '30px'}}>menu</i>
     <i className="material-icons" id="close" style={{fontSize: '30px', display: 'none'}}>close</i>
     </button>
@@ -128,7 +128,9 @@ class Navigationbar extends React.Component {
     <li><a href="https://studentportal.vnit.ac.in/testimonials">Testimonials</a></li>
     <li class="dropdown login">
                     <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Hey! {localStorage.getItem('username')}</a>
+                       aria-expanded="false">Hey! {localStorage.getItem('username')}
+                       <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu">
                         <li><a href="/dashboard/{{ clg_id | urlencrypt }}/"><i class="material-icons">dashboard</i>Dashboard</a>
                         </li>

@@ -143,17 +143,17 @@ class ApplicantDetails extends React.Component {
           </div>
           <div class="row row-center">
             <a style={{'text-decoration': 'none'}} href={this.state.resume} target="blank" class="stupo-btn">View Resume</a>
-            <div class="float-right">
+          </div>
+            <div class="row row-center">
             {localStorage.getItem('role')==="professor"?
                <form onSubmit={this.handleSubmit}>
                 {this.state.status === APPLICATION_NOT_SELECTED
-                 ? <button class="stupo-btn" style={{'float': 'right'}} data-toggle="modal" data-target="#myselectModal">Select</button>
+                 ? <button class="stupo-btn" data-toggle="modal" data-target="#myselectModal">Select</button>
                  :null
                 }
               </form>
               :null
               }
-            </div>
             </div>
           </div>
           <div class="col-sm-5">

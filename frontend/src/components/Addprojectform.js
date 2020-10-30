@@ -193,7 +193,7 @@ class Addprojectform extends React.Component {
               <input type="text" name="criterion" value={this.state.value} onChange={this.handleChange} required />
 
               <br/>
-              <center><button type="submit" className="btn stupo-btn" data-toggle="modal" data-target="#myselectModal" name="submit" /></center>
+              <center><button type="submit" className="btn stupo-btn" data-toggle="modal" data-target="#myselectModal" name="submit" >Add Project</button></center>
             </form>
         </div>
           <br />
